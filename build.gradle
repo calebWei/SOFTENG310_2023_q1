@@ -2,6 +2,7 @@ plugins {
     id 'jacoco'
     id 'war'
     id 'org.gretty' version '3.0.3'
+    id "org.sonarqube" version "4.2.1.3168"
 }
 
 sourceCompatibility = 1.8
@@ -36,6 +37,14 @@ jacocoTestReport {
 gretty {
     contextPath = '/'
     integrationTestTask = 'test'
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "quizorganization_q7"
+    property "sonar.organization", "quizorganization"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 check.dependsOn jacocoTestReport
